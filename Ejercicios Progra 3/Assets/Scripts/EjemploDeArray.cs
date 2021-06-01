@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class EjemploDeArray : MonoBehaviour
 {
-
-    public string color;
-    //public string[] textoarray;
-    //public string[] textoarray = {"a",5,"b"};
+    private List<string> ballsToPass = new List<string>();
+    private int currentBall;
     public GameObject[] balls;
-   // public string[] arr;
-    // Start is called before the first frame update
+    public GameObject[] passedBalls;
+
     void Start()
     {
     }
@@ -18,26 +16,24 @@ public class EjemploDeArray : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space")){
-            color = Instantiate(balls[Random.Range(0, balls.Length)]).name;
+        if (Input.GetKeyDown("space")) {
 
-            //color.name = Random.Range(0, balls.Length).ToString();
-            //gameObject.name;
-          //  color = Random.Range(0, balls.Length);
 
-            
-            if (color == "yellow(Clone)" || color == "Blue(Clone)" ||  color == "green(Clone)")
-            {
-                //Debug.Log(gameObject.name, gameObject);
-                Debug.Log(color);
-                //arr[0] = color;
-                
+            currentBall = Random.Range(0, balls.Length); // basically generates a random number from the length of the balls array, to be used as an index
+
+            GameObject ball = Instantiate(balls[currentBall]) as GameObject;  // "as gameobjects" is type casting the instance to a gameobject. 
+            if (ball.name != "Red(Clone)") {
+
+                ballsToPass.Add(ball.name); //adds element name to list
+                Debug.Log(ball.name); // logs name
             }
-            
-
         }
 
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            for (int i = 0; i < ballsToPass.Count; i++)  //logs the list in console
 
-
+                Debug.Log(ballsToPass[i]);
+        }
     }
 }
