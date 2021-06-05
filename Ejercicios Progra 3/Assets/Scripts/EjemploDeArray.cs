@@ -21,7 +21,7 @@ public class EjemploDeArray : MonoBehaviour
 
             currentBall = Random.Range(0, balls.Length); // basically generates a random number from the length of the balls array, to be used as an index
 
-            GameObject ball = Instantiate(balls[currentBall]) as GameObject;  // "as gameobjects" is type casting the instance to a gameobject. 
+            GameObject ball = Instantiate(balls[currentBall]) as GameObject;  // "as gameobjects" is type casting the instance to a gameobject.....is the typecast part actually needed.
             if (ball.name != "Red(Clone)") {
 
                 ballsToPass.Add(ball.name); //adds element name to list
@@ -33,7 +33,7 @@ public class EjemploDeArray : MonoBehaviour
         {
             for (int i = 0; i < ballsToPass.Count; i++)  //logs the list in console
 
-                Debug.Log(ballsToPass[i]);
+                Debug.Log("The array contains \n "+ballsToPass[i]);
         }
     }
 }
